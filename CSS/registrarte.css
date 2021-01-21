@@ -1,0 +1,922 @@
+/*Normalizamos css para eliminar todos los estilos por defecto de los diferentes navegadores*/
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+@font-face {
+  font-family: "TitleFont";
+  src: url("../Fuentes/ForzaJuve-Regular.ttf");
+}
+@font-face {
+  font-family: "NavFont";
+  src: url("../Fuentes/big_noodle_titling_oblique.ttf");
+}
+#TitlePri {
+  font-family: "TitleFont";
+  font-size: 200%;
+  margin-left: -83px;
+}
+
+/*CREAMOS LAS GRILLAS*/
+body {
+  display: grid;
+  height: 100vh; /*Para que se redimensione al tamaño de pantalla*/
+  grid-template-columns: 20% 1fr 20%; /*Creamos un grid de 3 columnas en la que las 2 laterales midan un 20% y la del medio ocupe el tamaño restante */
+  grid-template-rows:
+    100px
+    50px
+    580px
+    100px; /*Creamos un grid de 4 filas en la que la de arriba y abajo midan un 100px, la segunda 50 px y la tercera ocupe el tamaño restante */
+  grid-row-gap: 5%; /*Dejamos espaciado entre las filas*/
+  grid-template-areas: /*Asignamos un apodo a las areas que vamos a crear*/
+    ". header ."
+    "nav nav nav"
+    "asideI section asideD"
+    "footer footer footer";
+
+  background-image: url("../Imagenes/blacky.jpg");
+  background-repeat: no-repeat; /* No repetir la imagen */
+  background-size: cover; /* Redimencionar la imagen para que cubra todo el fondo */
+  justify-items: center;
+  margin: 2% 4% 2% 4%;
+  max-width: 1500px; /*Para que como máximo se haga de 1500px de ancho aun haciendo zoom hacia atras*/
+  margin-left: auto;
+  margin-right: auto; /*Para centrar todo el contenido*/
+  max-height: 2500px; /*Para que como máximo se haga de 2500px de alto aun haciendo zoom hacia atras*/
+  box-sizing: border-box;
+}
+
+/*HEADER*/
+
+/*Ponemos el header en su área que hemos creado anteriormente*/
+header {
+  display: grid;
+  grid-area: header;
+  min-width: 400px; /*Para que como mínimo se haga de 400px ya que sino queda mal al hacer mucho zoom*/
+}
+
+/*Ponemos la imagen y el h1 en línea y lo centramos*/
+#encabezado {
+  display: flex;
+  flex-direction: row; /*Para que esten el título y la imagen en la misma línea*/
+  justify-content: space-around; /*  Para que este centrado  */
+  background: #222;
+  box-shadow: 0 5px 5px #888888, 0 9px 0 #393939,
+    0px 9px 10px rgba(0, 0, 0, 0.4), inset 0px 2px 15px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 9px rgba(0, 0, 0, 0.2);
+}
+
+/*Damos tamaño al logo 	*/
+#encabezado a img {
+  display: flex;
+  width: 100px;
+  height: 80%;
+  margin: 10px 0 0 0;
+}
+
+/*Alineamos el logo*/
+header > div > a {
+  padding: 1%; /*Para dejar un espacio arriba del logo*/
+}
+
+/*Ponemos bien el título*/
+h1 {
+  display: flex;
+  align-items: center; /*Centramos verticalmente el título*/
+  font-size: 2rem; /*Agrandamos la letra del título*/
+  font-weight: bold; /*La ponemos en negrita*/
+  color: #f4c772;
+  letter-spacing: 2px; /*Dejamos un poco de espacio entre las letras del título*/
+}
+
+/*MENÚ PRINCIPAL*/
+
+/*Asignamos el área al menú que hemos creado anteriormente*/
+nav {
+  display: grid;
+  grid-area: nav;
+}
+
+#btn-menu {
+  display: none; /*Que no aparezca el botón del menú responsive en escritorio*/
+}
+#jaja {
+  display: none; /*Que no aparezca la imagen del botón del menú responsive en escritorio*/
+}
+/* label{display: none;}, prueba*/
+
+.menu > ul {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+.menu li {
+  display: flex;
+  text-align: center;
+  flex-grow: 1; /*Le decimos a cada li el espacio que debe ocupar el elemento dentro del contenedor flexible*/
+}
+.menu li:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+.menu li a {
+  display: flex;
+  padding: 20px 20px 20px;
+  color: #fff;
+  text-decoration: none;
+  align-items: center;
+}
+
+.menu {
+  display: block;
+  font-family: "NavFont";
+  letter-spacing: 4px; /*Cambiamos la tipografía de la letra de los menús*/
+  width: 90%; /*Hacemos que el menú mida un 90% del tamaño total de la pantalla*/
+  margin: 1.5rem auto; /*Dejamos 1.5 rem de margen en la parte de arriba y los demás márgenes los ponemos en automático para que se centre el menú*/
+  font-weight: bold; /*La ponemos en negrita*/
+}
+/*Damos estilo a la lista que compone el menú*/
+.menu ul {
+  list-style-type: none; /*Quitamos el estilo de la lista que te pone por defecto*/
+  text-align: center; /*Alineamos el texto de los menús al centro*/
+  font-size: 0;
+}
+.menu > ul li {
+  display: inline-block; /*Para que los elementos del menu choquen entre ellos pero a su vez estén en línea.*/
+  width: 25%; /*Tamaño de los cuadradrados botones*/
+  position: relative; /*Para que su posición sea relativa con respecto al resto de objetos*/
+
+  background: #222; /*Ponemos color de fondo al menú*/
+  box-shadow: 0 5px 5px #888888, 0 9px 0 #393939,
+    0px 9px 10px rgba(0, 0, 0, 0.4), inset 0px 2px 15px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 9px rgba(0, 0, 0, 0.2); /*Creamos una sombra al menú*/
+}
+
+/*Damos formato a los enlaces del menú. (Quitamos el formato por defecto damos tamaño a la letra dejamos espacio debajo y cambiamos color de letra)*/
+.menu li a {
+  display: block;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 0rem; /*Dejamos 0px de espacio debajo*/
+  color: #fff;
+}
+
+/*Cuando pasamos el raton por encima de un elemento del menú nos ponga el fondo de color verde*/
+.menu li:hover a {
+  background: #8da889;
+}
+
+.menu li ul {
+  position: absolute; /*Para que no se quede el hueco del desplegable*/
+  width: 0;
+  overflow: hidden; /*Para que los submenús puedan ser recortados sin que se muestran barras de posición.*/
+}
+
+.menu li:hover ul,
+.menu li:focus ul {
+  width: 100%; /*Tamaño de los submenus*/
+  z-index: 2; /*Para que se sobrepongan los submenús a la imagen*/
+}
+
+/*Ponemos los submenús en formato de bloque con el tamaño del padre*/
+.menu li li {
+  display: block;
+  width: 100%;
+}
+/*Damos formato a los submenús (Cambiamos el estilo de letra el tamaño el color y demas)*/
+.menu li:hover li a,
+.menu li:focus li a {
+  font-family: monospace;
+  line-height: 1.7rem;
+  border-top: 1px solid #e5e5e5;
+  background: #444;
+}
+
+.menu li li a:hover,
+.menu li li a:focus {
+  background: #8aa9b8;
+}
+
+/*ASIDEDERECHA*/
+
+/*Asignamos el area que hemos creado para el aside de la derecha y lo justificamos a la derecha*/
+#asideD {
+  display: grid;
+  grid-area: asideD;
+  max-width: 400px;
+  max-height: auto;
+  margin-right: 4%;
+  min-width: 20%;
+}
+
+/*Cogemos las imágenes del aside de la derecha las ponemos todas al mismo tamaño y les dejamos márgenes*/
+#asideD a img {
+  display: flex;
+  width: 80%;
+  margin: 0 100px 10px 30px;
+  opacity: 0;
+}
+
+/*Damos estilo a todos las imagenes que estan dentro del div*/
+#encuadrarD {
+  display: flex;
+  flex-direction: column; /*Ponemos las imágenes con el eje principal en vertical para que no esten una tras otra en línea*/
+  justify-content: space-around; /*Dejamos espacio entre ellas (en vertical ya que se ha cambiado la direccion del eje)*/
+  background: url("../Imagenes/asider.jpg");
+  height: 109%;
+}
+
+/*ASIDEIZQUIERDA*/
+
+/*Ponemos el aside en su área que hemos creado anteriormente*/
+#asideI {
+  display: grid;
+  grid-area: asideI;
+  max-width: 300px;
+  min-width: 20%;
+  margin-left: 4%;
+}
+#encuadrarI {
+  display: flex;
+  flex-direction: column;
+  background: url("../Imagenes/asider.jpg");
+  justify-content: space-around; /*Dejamos espacio entre ellas (en vertical ya que se ha cambiado la direccion del eje)*/
+  align-items: flex-start; /*Las ponemos en el centro */
+  height: 109%;
+}
+
+/*Cogemos las imágenes del aside de la izquierda las ponemos todas al mismo tamaño y les dejamos márgenes*/
+#asideI img {
+  width: 80%;
+  margin: 0 100px 10px 30px;
+  opacity: 0;
+}
+
+/*Ponemos la imagen de abajo del todo un poco más grande ya que nos parece que se queda pequeña*/
+#asideI a:nth-child(3) {
+  width: 90%;
+}
+
+/*IMAGEN PRINCIPAL Y TEXTO */
+
+#seccionprincipal {
+  display: grid;
+  grid-area: section;
+  height: 626px;
+  /*overflow-x: hidden; /* Hide horizontal scrollbar */
+ /* overflow-y: scroll; /* Add vertical scrollbar */
+}
+
+#contenedor_formulario {
+  margin-top: 22px;
+  width: 450px;
+  height: auto;
+  border-radius: 6px;
+  text-align: center;
+  color: white;
+  background-color: black;
+}
+select {
+  width: 80%;
+  height: 35px;
+  background-color: #333333;
+  color: white;
+  text-align: center;
+  margin-bottom: 7px;
+  border-radius: 4px;
+  border: black;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+option {
+  width: 80%;
+  height: 35px;
+  background-color: #333333;
+  color: white;
+  text-align: center;
+  margin-bottom: 7px;
+  border-radius: 4px;
+  border: black;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+#logo {
+  width: 70px;
+  height: 70px;
+  margin-top: 27px;
+}
+#contenedor_formulario h4 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: white;
+  font-family: Helvetica !important;
+
+  letter-spacing: 10px;
+}
+#pasword {
+  margin-bottom: 5px;
+}
+.controls {
+  width: 80%;
+  height: 35px;
+  background-color: #333333;
+  color: white;
+  text-align: center;
+  margin-bottom: 7px;
+  border-radius: 4px;
+  border: black;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+#contenedor_formulario p {
+  padding: 5px 0px 24px;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+#contenedor_formulario a {
+  text-decoration: none;
+  color: white;
+}
+
+#contenedor_formulario a:hover {
+  text-decoration: underline;
+  color: grey;
+}
+.genero{
+  margin: 10px 10px 10px 15px ;
+}
+
+#boton_entrar {
+  cursor: pointer;
+  background-color: #333333;
+  border: solid 1px #333333;
+}
+
+#recordar {
+  margin: 72px;
+  color: white;
+}
+#mail {
+  cursor: pointer;
+  background-color: #21538d;
+}
+
+#logo_face {
+  position: absolute;
+  left: 42%;
+  top: 65%;
+  height: 30px;
+}
+#mensaje {
+  width: 200px;
+  height: auto;
+}
+#mensajeenviado {
+  cursor: pointer;
+  background-color: #333333;
+  border: solid 1px #333333;
+}
+#borrar {
+  cursor: pointer;
+  background-color: #333333;
+  border: solid 1px #333333;
+}
+/*PAGINAS DE SERVICIOS*/
+
+/*SENSORES DE ENTRADA*/
+.SensoresE {
+  display: grid;
+  grid-area: section;
+  max-height: 800px;
+}
+.SensoresE > h2 {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  margin-bottom: 5%;
+  font-family: "NavFont";
+}
+
+/*SENSORES DE APARCAMIENTO*/
+.SensoresA {
+  display: grid;
+  grid-area: section;
+  max-height: 800px;
+}
+.SensoresA > h2 {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  margin-bottom: 5%;
+  font-family: "NavFont";
+}
+
+/*AFORO DE AULAS*/
+.AforoAulas {
+  display: grid;
+  grid-area: section;
+  max-height: 800px;
+}
+.AforoAulas > h2 {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  text-align: center;
+  margin-bottom: 5%;
+  font-family: "NavFont";
+}
+.AforoAulas > h1 {
+  display: block;
+  text-align: center;
+  font-size: 2rem; /*Agrandamos la letra del título*/
+  font-weight: bold; /*La ponemos en negrita*/
+  color: #f4c772;
+  letter-spacing: 2px;
+  font-family: "NavFont";
+}
+
+/*AFORO DE AULAS*/
+.AforoAparcamiento {
+  display: grid;
+  grid-area: section;
+  max-height: 800px;
+}
+.AforoAparcamiento > h2 {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  margin-bottom: 5%;
+  font-family: "NavFont";
+}
+
+/*PAGINAS DE OFERTAS*/
+
+/*OFERTA 5%*/
+
+#alinear-arribadiv5 > h2 {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  color: #5383d3;
+  margin-bottom: 5%;
+  width: 26rem;
+  padding-left: 40%;
+}
+#alinear-arribadiv5 img {
+  height: 13rem;
+  margin: 0% 0% 0% 2%;
+  box-shadow: 5px 5px 24px 1px rgba(125, 125, 125, 0.72);
+}
+
+/*OFERTA 10%*/
+
+#alinear-arribadiv10 > h2 {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  color: #5383d3;
+  margin-bottom: 5%;
+  width: 26rem;
+  padding-left: 40%;
+}
+#alinear-arribadiv10 img {
+  height: 16rem;
+  width: 18rem;
+  margin: 0% 0% 0% 2%;
+  box-shadow: 5px 5px 24px 1px rgba(125, 125, 125, 0.72);
+}
+
+/*OFERTA 15%*/
+
+#alinear-arribadiv15 > h2 {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  color: #5383d3;
+  margin-bottom: 5%;
+  width: 26rem;
+  padding-left: 40%;
+}
+#alinear-arribadiv15 img {
+  height: 18rem;
+  margin: 0% 0% 0% 2%;
+  box-shadow: 5px 5px 24px 1px rgba(125, 125, 125, 0.72);
+}
+
+/*OFERTA 20%*/
+
+.container20 {
+  display: grid;
+  grid-area: section;
+  max-height: 800px;
+}
+.arriba20 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.alinear-arribadiv20 > h2 {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  color: #5383d3;
+  margin-bottom: 5%;
+  width: 26rem;
+  padding-left: 40%;
+}
+.alinear-arribadiv20 img {
+  height: 20rem;
+  margin: 0% 0% 0% 2%;
+  box-shadow: 5px 5px 24px 1px rgba(125, 125, 125, 0.72);
+}
+
+.alinearderecha20 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  max-height: 220px;
+  margin-top: 3.5rem;
+  border: 7px solid white;
+}
+.alinearderecha20 h3 {
+  color: #5383d3;
+  font-size: 1.9rem;
+}
+.alinearderecha20 p {
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  width: 19rem;
+  min-width: 10rem;
+}
+.parrafo20 {
+  display: flex;
+  color: #5383d3;
+  justify-content: center;
+  font-size: 2rem;
+  text-decoration: underline;
+}
+.oferf {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+.oferf img {
+  width: 14rem;
+  height: 60%;
+  box-shadow: 5px 5px 24px 1px rgba(125, 125, 125, 0.72);
+  border-radius: 2%;
+}
+.alinearderecha20 button {
+  width: 8rem;
+  height: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/*PAGINAS DE CATEGORIAS*/
+
+.alineargorras {
+  display: grid; /*no es nesecario para poner area*/
+  grid-area: section;
+}
+.Ponerlinea {
+  display: flex;
+  flex-wrap: wrap; /*Hace que los elementos hijos fluyan en varias lineas*/
+  overflow: auto; /*Se dibujan las barras de desplazamiento segun se necesite para mostrar el contenido excedente*/
+  height: 122vh;
+  justify-content: center;
+}
+.alineargorras > div > img {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 30%;
+  border: 3px solid #575a53;
+  border-radius: 25px;
+}
+
+/*PAGINAS DE CONTACTO*/
+.todo {
+  grid-area: section;
+}
+.lista {
+  text-align: center;
+  color: white;
+  line-height: 200%; /*Deja espacio entre lineas*/
+}
+
+.lista ul li {
+  color: white;
+}
+section {
+  color: white;
+}
+table {
+  border: 6;
+  color: black;
+  background: #fff;
+  width: 400px;
+  height: 200px;
+  margin-top: 1%;
+  margin-left: 1%;
+  border: #f4c772 5px solid;
+  text-align: center;
+  width: 100%;
+  margin: 4% 0% 4% 0%;
+}
+
+td {
+  border: grey 5px solid;
+}
+
+/*ACERCA DE*/
+#seccionacerca {
+  display: flex;
+  grid-area: section;
+  margin: 10%;
+}
+#seccionacerca video {
+  width: 80%;
+  margin: 10%;
+}
+#seccionacerca p {
+  color: white;
+  text-align: center;
+  line-height: 150%;
+  font-size: 1.7rem;
+}
+
+/*FORMULARIO*/
+
+/*FOOTER*/
+
+footer {
+  display: grid;
+  grid-area: footer;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  margin-top: 2.1%;
+}
+
+footer h4 {
+  color: #fff;
+  text-align: center;
+  font-family: "NavFont";
+  letter-spacing: 2px;
+}
+#Iconos {
+  display: flex;
+  justify-content: center;
+}
+#Iconos img {
+  padding: 0px 70px;
+}
+
+.fotoproducto {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: 5%;
+  box-shadow: 5px 5px 24px 1px rgba(125, 125, 125, 0.72);
+  height: 370px;
+  margin-bottom: -50%;
+}
+.fotoproducto2 img {
+  width: 200px;
+  height: 200px;
+  align-items: center;
+  border-radius: 10%;
+  box-shadow: 5px 5px 24px 1px rgba(125, 125, 125, 0.72);
+  align-self: center;
+  margin-bottom: 10%;
+}
+.fotoproducto img {
+  width: 200px;
+  height: 200px;
+  align-items: center;
+  border-radius: 10%;
+  box-shadow: 5px 5px 24px 1px rgba(125, 125, 125, 0.72);
+  align-self: center;
+  margin-bottom: 10%;
+}
+
+.jiji {
+  color: white;
+  font-size: 1.2em;
+}
+.mostrarpre {
+  font-size: 2em;
+  width: 100%;
+  background-color: #e47911;
+  color: khaki;
+  border-radius: 10%;
+  margin-left: 0px;
+  margin-top: 10%;
+}
+
+.sumedia {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  box-shadow: 5px 5px 24px 1px rgba(125, 125, 125, 0.72);
+}
+.datos {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 1.5em;
+  margin-top: 10%;
+  margin-bottom: 3%;
+  color: #cecaca;
+}
+.proveedor {
+  font-size: 2em;
+  text-align: center;
+  background-color: white;
+}
+.proveedores {
+  color: #cecaca;
+}
+/*MEDIA QUERY PARA HACER ZOOM EN ESCRITORIO O PANTALLAS PEQUEÑAS*/
+
+@media only screen and (max-width: 1220px) {
+  .fotoproducto {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1%;
+    box-shadow: 5px 5px 24px 1px rgba(125, 125, 125, 0.72);
+    align-items: center;
+  }
+  .fotoproducto img {
+    width: 400px;
+    height: 400px;
+    align-items: center;
+    border-radius: 10%;
+    box-shadow: 5px 5px 24px 1px rgba(125, 125, 125, 0.72);
+    align-self: center;
+    margin-bottom: 10%;
+  }
+  .fotoproducto2 {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding: 5%;
+    box-shadow: 5px 5px 24px 1px rgba(125, 125, 125, 0.72);
+    height: 300px;
+    margin-bottom: 0%;
+    min-width: 180px;
+  }
+  .sumedia {
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    box-shadow: none;
+  }
+  /*.sumedia{
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          width: 20%;
+      }	*/
+
+  /*Hacemos que aparezca el menu responsive*/
+  #jaja {
+    display: block;
+    margin-top: 250px;
+  }
+  /*Le damos posición absolute para que no tenga en cuenta el resto de elementos*/
+  .menu {
+    position: absolute;
+    width: 20%;
+    margin-left: -290%; /*Para que desaparezcan los menus*/
+    transition: all 0.5s; /*Le ponemos un tiempo de transición al salir el menú*/
+    z-index: 3; /*Le ponemos z-index para que salga por encima del resto de elementos*/
+  }
+  /*Ponemos los items del menú en dirección de columnas con tamaño suficiente para que entre el texto*/
+  .menu ul {
+    flex-direction: column;
+    width: 400%;
+  }
+  /* Hacemos que al clicar sobre el icono responsive aparezcan los items del menú*/
+  #btn-menu:checked ~ .menu {
+    margin-left: 0;
+    margin-top: 300px;
+  }
+
+  /*Cambiamos el área del aside de la izquierda para que aparezca arriba al hacer pequeña la pantalla*/
+  #asideI {
+    display: grid;
+    grid-area: nav; /*Para que el asideI utlize el area del nav en la media query*/
+    min-height: 50px; /*Le decimos que el mínimo de anchura sea 50px para que no sea super pequeño al redimensionar hacia arriba*/
+    justify-self: left; /*Lo ponemos a la izquierda*/
+  }
+  #encuadrarI {
+    display: flex;
+    flex-direction: row;
+    background: url("../Imagenes/asider.jpg");
+    justify-content: space-around; /*Dejamos espacio entre ellas (en vertical ya que se ha cambiado la direccion del eje)*/
+    align-items: space-around; /*Las ponemos en el centro */
+    width: 90vw;
+    min-width: 800px;
+  }
+  #asideI img {
+    width: 5rem;
+    margin: 0rem 7rem 0rem 0rem;
+    height: 50px;
+  }
+  #asideI img:nth-child(1) {
+    margin-left: 40%;
+  }
+  #asideD {
+    display: grid;
+    grid-area: footer; /*Para que el asideD utlize el area del footer en la media query*/
+    min-height: 50px;
+    align-self: flex-start;
+    z-index: 1;
+    justify-self: flex-start;
+  }
+
+  #encuadrarD {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    width: 820px;
+    padding-left: 20%;
+    margin-left: 4%;
+    min-width: 700px;
+  }
+  #asideD img {
+    margin-right: 100px;
+    width: 80%;
+  }
+  #asideD a:nth-child(1) {
+    width: 10%;
+  }
+  #asideD a:nth-child(2) {
+    width: 10%;
+    margin-top: auto;
+  }
+
+  #asideI a:nth-child(3) {
+    width: 30%;
+  }
+
+  #encuadrarD {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    width: 67vh;
+    padding-left: 20%;
+    margin-left: 4%;
+    max-width: 700px;
+  }
+}
+
+/*MEDIA QUERY MOVIL*/
+@media only screen and (max-width: 700px) {
+  #encuadrarI {
+    display: flex;
+    flex-direction: row;
+    background: url("../Imagenes/asider.jpg");
+    justify-content: space-around; /*Dejamos espacio entre ellas (en vertical ya que se ha cambiado la direccion del eje)*/
+    align-items: space-around; /*Las ponemos en el centro */
+    width: 90vw;
+    min-width: 100px;
+    margin-left: 0%;
+  }
+  #jaja {
+    display: block;
+    margin-top: 200px;
+  }
+  #encuadrarD {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    width: 54vh;
+    padding-left: 20%;
+    margin-left: 4%;
+    max-width: 100px;
+  }
+}
